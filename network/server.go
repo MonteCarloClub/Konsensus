@@ -28,6 +28,9 @@ func (s *Server) StartServer() {
 			continue
 		}
 		data := s.Putter.GetFromEtcdKv(string(msg.Value))
+		if data == "" {
+			continue
+		}
 		if err := json.Unmarshal([]byte(data), &depositoryValue); err == nil {
 			depositoryValue.Status = "1"
 			depositoryValueJson, _ := json.Marshal(depositoryValue)
