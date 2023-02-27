@@ -1,3 +1,5 @@
+github.com/MonteCarloClub/Krypto v1.0.1 h1:Aq12Vtf6wNfDJ2z+0r3qmobSs7KS9D80FcPJ3r4U4A0=
+github.com/MonteCarloClub/Krypto v1.0.1/go.mod h1:QsxPl1vcymJ26J8vNCR557uoYHKr8QI0sXiwWvah8Aw=
 github.com/MonteCarloClub/kchain-middleware v0.0.0-20230227121457-41cee69ef14d h1:SiAUuJsr3rmkSBSaBDvdRJFTcx4dcs41udiyUv1W+Gk=
 github.com/MonteCarloClub/kchain-middleware v0.0.0-20230227121457-41cee69ef14d/go.mod h1:0wKjXy7CwlpkhMOqpVDof6qmj2P08Xp2BZOPmIoXg7U=
 github.com/MonteCarloClub/log v1.0.1 h1:YcSNPOtRgeUW8Trg1etCb98VVu7up7guAAp39xSH1pk=

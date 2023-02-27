@@ -5,6 +5,7 @@ go 1.20
 require github.com/MonteCarloClub/kchain-middleware v0.0.0-20230227121457-41cee69ef14d
 
 require (
+	github.com/MonteCarloClub/Krypto v1.0.1
 	github.com/MonteCarloClub/log v1.0.1 // indirect
 	github.com/Shopify/sarama v1.38.1 // indirect
 	github.com/bytedance/sonic v1.8.2 // indirect

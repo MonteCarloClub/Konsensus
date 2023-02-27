@@ -7,6 +7,8 @@ import (
 	"github.com/MonteCarloClub/log"
 	"github.com/yunxiaozhao/Konsensus/etcd"
 	"github.com/yunxiaozhao/Konsensus/kafka"
+
+	"github.com/MonteCarloClub/Krypto/sm2"
 )
 
 type Server struct {
@@ -32,6 +34,12 @@ func (s *Server) StartServer() {
 			continue
 		}
 		if err := json.Unmarshal([]byte(data), &depositoryValue); err == nil {
+			if depositoryValue.CryptoMethod == "sm" {
+				pubKey, _ := sm2.RawBytesToPublicKey([]byte(depositoryValue.PubKey))
+				if sm2.Verify(pubKey, nil, []byte(depositoryValue.Data), []byte(depositoryValue.Signature)) {
+					log.Info("Signature verified!!!")
+				}
+			}
 			depositoryValue.Status = "1"
 			depositoryValueJson, _ := json.Marshal(depositoryValue)
 			s.Putter.PutToEtcdKv(string(msg.Value), string(depositoryValueJson))
