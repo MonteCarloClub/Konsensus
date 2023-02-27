@@ -11,14 +11,15 @@ import (
 
 type Server struct {
 	Consumer kafka.Consumer
-	Producer kafka.Producer
 	Putter   etcd.Putter
 }
 
 func (s *Server) StartServer() {
+
+	//初始化kafka消费者和etcd修改器
 	s.Consumer.InitConsumer()
-	s.Producer.InitProducer()
 	s.Putter.InitEtcdClient()
+
 	go s.Consumer.ReceiveFromKafka()
 	for msg := range s.Consumer.MessageChan {
 		var depositoryValue handler.DepositoryValue
@@ -34,13 +35,10 @@ func (s *Server) StartServer() {
 		} else {
 			log.Error("fail to unmarshal depository value", "err", err)
 		}
-
-		s.Producer.SendToKafka(string(msg.Value))
 	}
 }
 
 func (s *Server) StopServer() {
 	s.Consumer.KafkaConsumer.Close()
 	close(s.Consumer.MessageChan)
-	s.Producer.KafkaProducer.Close()
 }

@@ -14,7 +14,7 @@ type Putter struct {
 
 func (p *Putter) InitEtcdClient() {
 	client, err := clientv3.New(clientv3.Config{
-		Endpoints:   []string{"106.14.244.78:2379"},
+		Endpoints:   []string{"localhost:2379"},
 		DialTimeout: 5 * time.Second,
 	})
 	if err != nil {

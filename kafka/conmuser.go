@@ -2,9 +2,10 @@ package kafka
 
 import (
 	"fmt"
+	"sync"
+
 	"github.com/MonteCarloClub/log"
 	"github.com/Shopify/sarama"
-	"sync"
 )
 
 type Consumer struct {
@@ -54,4 +55,3 @@ func (c *Consumer) ReceiveFromKafka() {
 	}
 	wg.Wait()
 }
-
