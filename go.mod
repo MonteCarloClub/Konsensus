@@ -2,12 +2,12 @@ module github.com/yunxiaozhao/Konsensus
 
 go 1.20
 
-require github.com/MonteCarloClub/kchain-middleware v0.0.0-20230227121457-41cee69ef14d
+require github.com/MonteCarloClub/kchain-middleware v0.0.0-20230227160328-7ef2827cbef3
 
 require (
 	github.com/MonteCarloClub/Krypto v1.0.1
-	github.com/MonteCarloClub/log v1.0.1 // indirect
-	github.com/Shopify/sarama v1.38.1 // indirect
+	github.com/MonteCarloClub/log v1.0.1
+	github.com/Shopify/sarama v1.38.1
 	github.com/bytedance/sonic v1.8.2 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
@@ -48,7 +48,7 @@ require (
 	github.com/ugorji/go/codec v1.2.10 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.7 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.7 // indirect
-	go.etcd.io/etcd/client/v3 v3.5.7 // indirect
+	go.etcd.io/etcd/client/v3 v3.5.7
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect

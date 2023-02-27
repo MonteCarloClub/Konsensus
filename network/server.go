@@ -35,7 +35,7 @@ func (s *Server) StartServer() {
 		}
 		if err := json.Unmarshal([]byte(data), &depositoryValue); err == nil {
 			if depositoryValue.CryptoMethod == "sm" {
-				log.Info("sm2 signature verification", "TxHash", msg.Value)
+				log.Info("sm2 signature verification", "TxHash", string(msg.Value))
 				pubKey, err := sm2.RawBytesToPublicKey([]byte(depositoryValue.PubKey))
 				if err != nil {
 					log.Error("fail to convert public key", "err", err)
