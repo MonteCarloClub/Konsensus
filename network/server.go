@@ -21,6 +21,7 @@ type Server struct {
 func (s *Server) StartServer() {
 	//初始化配置
 	util.ReadConfig()
+	defer util.WriteConfig()
 
 	//初始化kafka消费者和etcd修改器
 	s.Consumer.InitConsumer()

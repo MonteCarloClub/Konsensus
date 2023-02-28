@@ -1,12 +1,1 @@
-{
-    "kafka_topic": "kchain",
-    "kafka_server": [
-        "106.14.244.78:9092"
-    ],
-    "kafka_group": "Konsensus",
-    "kafka_offset": "-2",
-    "etcd_server": [
-        "106.14.244.78:2379"
-    ],
-    "dial_timeout" : 5 
-}
+{"kafka_server":["106.14.244.78:9092"],"kafka_topic":"kchain","kafka_group":"Konsensus","kafka_offset":77,"etcd_server":["106.14.244.78:2379"],"dial_timeout":5}
