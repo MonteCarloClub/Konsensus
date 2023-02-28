@@ -19,11 +19,11 @@ func (p *Putter) InitEtcdClient() {
 		DialTimeout: time.Duration(util.Config.DialTimeout) * time.Second,
 	})
 	if err != nil {
-		log.Error("fail to init etcd client", "err", err)
+		log.Error("fail to initiate etcd client", "err", err)
 		return
 	}
 	p.EtcdClientKv = clientv3.NewKV(client)
-	log.Info("etcd client inited")
+	log.Info("etcd client initiated")
 }
 
 func (p *Putter) PutToEtcdKv(key string, value string) {

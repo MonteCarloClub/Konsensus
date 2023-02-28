@@ -2,6 +2,7 @@ package network
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/MonteCarloClub/kchain-middleware/handler"
 	"github.com/MonteCarloClub/log"
@@ -50,8 +51,10 @@ func (s *Server) StartServer() {
 					log.Error("Signature verification failed!!!")
 					continue
 				}
-			}
+			} //else {
+			//}
 			depositoryValue.Status = "1"
+			depositoryValue.Height = time.Now().GoString()
 			depositoryValueJson, _ := json.Marshal(depositoryValue)
 			s.Putter.PutToEtcdKv(string(msg.Value), string(depositoryValueJson))
 		} else {

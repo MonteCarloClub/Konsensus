@@ -10,7 +10,7 @@ type ConfigType struct {
 	KafkaServer []string `json:"kafka_server"`
 	KafkaTopic  string   `json:"kafka_topic"`
 	KafkaGroup  string   `json:"kafka_group"`
-	KafkaOffset int64    `json:"kafka_offset"`
+	KafkaOffset string   `json:"kafka_offset"`
 	EtcdServer  []string `json:"etcd_server"`
 	DialTimeout int64    `json:"dial_timeout"`
 }

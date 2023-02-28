@@ -71,6 +71,7 @@ func (c *Consumer) ReceiveFromKafka() {
 
 		// 获取分区offset
 		offset, _ := partitionOffsetManager.NextOffset()
+		log.Info("kafka partition offset got", "partition", partition, "offset", offset)
 
 		// OffsetNewest: 即时消费, OffsetOldest: 从积压的开始
 		partitionConsumer, err := c.KafkaConsumer.ConsumePartition((util.Config.KafkaTopic), int32(partition), offset)
