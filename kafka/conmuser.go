@@ -93,6 +93,5 @@ func (c *Consumer) ReceiveFromKafka() {
 		}(partitionConsumer)
 	}
 
-	// 等待所有分区消费者退出
 	wg.Wait()
 }
