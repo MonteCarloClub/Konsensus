@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/MonteCarloClub/log"
+	"github.com/yunxiaozhao/Konsensus/util"
 	clientv3 "go.etcd.io/etcd/client/v3"
 )
 
@@ -14,8 +15,8 @@ type Putter struct {
 
 func (p *Putter) InitEtcdClient() {
 	client, err := clientv3.New(clientv3.Config{
-		Endpoints:   []string{"localhost:2379"},
-		DialTimeout: 5 * time.Second,
+		Endpoints:   util.Config.EtcdServer,
+		DialTimeout: time.Duration(util.Config.DialTimeout) * time.Second,
 	})
 	if err != nil {
 		log.Error("fail to init etcd client", "err", err)

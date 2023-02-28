@@ -7,6 +7,7 @@ import (
 	"github.com/MonteCarloClub/log"
 	"github.com/yunxiaozhao/Konsensus/etcd"
 	"github.com/yunxiaozhao/Konsensus/kafka"
+	"github.com/yunxiaozhao/Konsensus/util"
 
 	"github.com/MonteCarloClub/Krypto/sm2"
 )
@@ -17,6 +18,8 @@ type Server struct {
 }
 
 func (s *Server) StartServer() {
+	//初始化配置
+	util.ReadConfig()
 
 	//初始化kafka消费者和etcd修改器
 	s.Consumer.InitConsumer()
