@@ -61,6 +61,8 @@ func (c *Consumer) ReceiveFromKafka() {
 		return
 	}
 	defer partitionOffsetManager.Close()
+	defer c.offsetManager.Close()
+	defer c.client.Close()
 
 	var wg sync.WaitGroup
 
