@@ -2,7 +2,7 @@ module github.com/yunxiaozhao/Konsensus
 
 go 1.20
 
-require github.com/MonteCarloClub/kchain-middleware v0.0.0-20230228125615-aa6d91f2d318
+require github.com/MonteCarloClub/kchain-middleware v0.0.0-20230308035723-08749c31cce7
 
 require (
 	github.com/MonteCarloClub/Krypto v1.0.1

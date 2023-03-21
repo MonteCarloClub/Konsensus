@@ -1,7 +1,7 @@
 github.com/MonteCarloClub/Krypto v1.0.1 h1:Aq12Vtf6wNfDJ2z+0r3qmobSs7KS9D80FcPJ3r4U4A0=
 github.com/MonteCarloClub/Krypto v1.0.1/go.mod h1:QsxPl1vcymJ26J8vNCR557uoYHKr8QI0sXiwWvah8Aw=
-github.com/MonteCarloClub/kchain-middleware v0.0.0-20230228125615-aa6d91f2d318 h1:+TsZnWuG4lQvn4/OBCYdMufOST4VXUPPYDppkVjVPf4=
-github.com/MonteCarloClub/kchain-middleware v0.0.0-20230228125615-aa6d91f2d318/go.mod h1:0wKjXy7CwlpkhMOqpVDof6qmj2P08Xp2BZOPmIoXg7U=
+github.com/MonteCarloClub/kchain-middleware v0.0.0-20230308035723-08749c31cce7 h1:8aeD8QfAd0aiqMbweHAo0a8Lz1Brji494D7VJ8X0H+o=
+github.com/MonteCarloClub/kchain-middleware v0.0.0-20230308035723-08749c31cce7/go.mod h1:0wKjXy7CwlpkhMOqpVDof6qmj2P08Xp2BZOPmIoXg7U=
 github.com/MonteCarloClub/log v1.0.1 h1:YcSNPOtRgeUW8Trg1etCb98VVu7up7guAAp39xSH1pk=
 github.com/MonteCarloClub/log v1.0.1/go.mod h1:mBfArQ5bLAbPWzAD1lSpJbwT43FsedKoeHZsiJqApWM=
 github.com/Shopify/sarama v1.38.1 h1:lqqPUPQZ7zPqYlWpTh+LQ9bhYNu2xJL6k1SJN4WVe2A=
