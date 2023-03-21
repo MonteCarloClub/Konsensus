@@ -73,7 +73,7 @@ func (s *Server) StartServer() {
 					continue
 				}
 				buff := bytes.NewBuffer(jsonMsg)
-				res, err := http.Post("127.0.0.1:"+port, "application/json", buff)
+				res, err := http.Post("http://127.0.0.1:"+port+"/verify", "application/json", buff)
 				if err != nil {
 					log.Error("fail to send preprepare message", "err", err)
 					continue

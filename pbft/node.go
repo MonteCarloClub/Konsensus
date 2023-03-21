@@ -18,11 +18,11 @@ func NewNode(port string) *node {
 
 func (n *node) Start() {
 	r := gin.Default()
-	r.POST("/verify", n.prePrepareHandler)
+	r.POST("/verify", n.verifyHandler)
 	r.Run(n.port)
 }
 
-func (n *node) prePrepareHandler(c *gin.Context) {
+func (n *node) verifyHandler(c *gin.Context) {
 	log.Info("===============preprepare phase begins==================")
 	var msg PrePrepareMsg
 	if err := c.BindJSON(&msg); err != nil {
