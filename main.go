@@ -6,13 +6,23 @@ import (
 	"syscall"
 
 	"github.com/yunxiaozhao/Konsensus/network"
+	"github.com/yunxiaozhao/Konsensus/pbft"
 	"github.com/yunxiaozhao/Konsensus/util"
 )
 
 func main() {
+	port := os.Args[1]
+	util.ReadConfig()
+	defer util.WriteConfig()
 	SetupCloseHandler()
-	server := network.Server{}
-	server.StartServer()
+	if port == util.Config.LeaderPort {
+		server := network.Server{}
+		server.StartServer()
+	} else {
+		node := pbft.NewNode("127.0.0.1:" + port)
+		node.Start()
+	}
+
 }
 
 func SetupCloseHandler() {

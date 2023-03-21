@@ -1,13 +1,17 @@
 package network
 
 import (
+	"bytes"
 	"encoding/json"
+	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/MonteCarloClub/kchain-middleware/handler"
 	"github.com/MonteCarloClub/log"
 	"github.com/yunxiaozhao/Konsensus/etcd"
 	"github.com/yunxiaozhao/Konsensus/kafka"
+	"github.com/yunxiaozhao/Konsensus/pbft"
 	"github.com/yunxiaozhao/Konsensus/util"
 
 	"github.com/MonteCarloClub/Krypto/sm2"
@@ -19,9 +23,6 @@ type Server struct {
 }
 
 func (s *Server) StartServer() {
-	//初始化配置
-	util.ReadConfig()
-	defer util.WriteConfig()
 
 	//初始化kafka消费者和etcd修改器
 	s.Consumer.InitConsumer()
@@ -47,17 +48,52 @@ func (s *Server) StartServer() {
 					continue
 				}
 				if sm2.Verify(pubKey, nil, []byte(depositoryValue.Data), []byte(depositoryValue.Signature)) {
+					depositoryValue.Status = "1"
 					log.Info("Signature verified!!!")
 				} else {
+					depositoryValue.Status = "-1"
 					log.Error("Signature verification failed!!!")
 					continue
 				}
 			} //else {
 			//}
-			depositoryValue.Status = "1"
-			depositoryValue.Height = time.Now().GoString()
-			depositoryValueJson, _ := json.Marshal(depositoryValue)
-			s.Putter.PutToEtcdKv(string(msg.Value), string(depositoryValueJson))
+
+			voteCount := 0
+
+			for _, port := range util.Config.FolowerPorts {
+				msg := pbft.PrePrepareMsg{
+					Data:         depositoryValue.Data,
+					SignResult:   depositoryValue.Signature,
+					CryptoMethod: depositoryValue.CryptoMethod,
+					PubKey:       depositoryValue.PubKey,
+				}
+				jsonMsg, err := json.Marshal(msg)
+				if err != nil {
+					log.Error("fail to marshal preprepare message", "err", err)
+					continue
+				}
+				buff := bytes.NewBuffer(jsonMsg)
+				res, err := http.Post("127.0.0.1:"+port, "application/json", buff)
+				if err != nil {
+					log.Error("fail to send preprepare message", "err", err)
+					continue
+				}
+
+				var result map[string]interface{}
+				json.NewDecoder(res.Body).Decode(&result)
+				if result["status"] == "ok" {
+					log.Info("A node votes yay")
+					voteCount++
+				} else {
+					log.Warn("A node votes nay")
+				}
+			}
+
+			if voteCount >= 333 {
+				depositoryValue.Height = strconv.FormatInt(time.Now().Unix(), 10)
+				depositoryValueJson, _ := json.Marshal(depositoryValue)
+				s.Putter.PutToEtcdKv(string(msg.Value), string(depositoryValueJson))
+			}
 		} else {
 			log.Error("fail to unmarshal depository value", "err", err)
 		}
