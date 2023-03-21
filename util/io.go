@@ -20,7 +20,7 @@ type ConfigType struct {
 var Config ConfigType
 
 func ReadConfig() {
-	file, err := os.Open("config.json")
+	file, err := os.Open("config_test.json")
 	if err != nil {
 		fmt.Println("open config file failed", err)
 		return

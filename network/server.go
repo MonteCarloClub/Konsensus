@@ -89,7 +89,8 @@ func (s *Server) StartServer() {
 				}
 			}
 
-			if voteCount >= 333 {
+			if voteCount >= (len(util.Config.FolowerPorts)-1)/3*2 {
+				log.Info("===============commit phase begins==================")
 				depositoryValue.Height = strconv.FormatInt(time.Now().Unix(), 10)
 				depositoryValueJson, _ := json.Marshal(depositoryValue)
 				s.Putter.PutToEtcdKv(string(msg.Value), string(depositoryValueJson))

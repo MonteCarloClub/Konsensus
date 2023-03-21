@@ -1,0 +1,16 @@
+{
+    "kafka_server": [
+        "106.14.244.78:9092"
+    ],
+    "kafka_topic": "kchain",
+    "kafka_group": "Konsensus",
+    "kafka_offset": 0,
+    "etcd_server": [
+        "106.14.244.78:2379"
+    ],
+    "dial_timeout": 5,
+    "leader_port": "10000",
+    "folloer_ports": [
+        "10001"
+    ]
+}

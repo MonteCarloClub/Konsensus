@@ -23,6 +23,7 @@ func (n *node) Start() {
 }
 
 func (n *node) prePrepareHandler(c *gin.Context) {
+	log.Info("===============preprepare phase begins==================")
 	var msg PrePrepareMsg
 	if err := c.BindJSON(&msg); err != nil {
 		c.JSON(400, gin.H{"error": err.Error()})
@@ -42,6 +43,7 @@ func (n *node) prePrepareHandler(c *gin.Context) {
 			return
 		}
 	}
+	log.Info("===============prepare phase begins==================")
 	c.JSON(http.StatusOK, gin.H{"status": "ok"})
 
 }
