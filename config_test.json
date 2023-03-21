@@ -6,11 +6,20 @@
     "kafka_group": "Konsensus",
     "kafka_offset": 0,
     "etcd_server": [
-        "106.14.244.78:2379"
+        "localhost:2379"
     ],
     "dial_timeout": 5,
     "leader_port": "10000",
     "folloer_ports": [
-        "10001"
+        "10001",
+        "10002",
+        "10003",
+        "10004",
+        "10005",
+        "10006",
+        "10007",
+        "10008",
+        "10009",
+        "10010"
     ]
 }
