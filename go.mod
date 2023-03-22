@@ -1,4 +1,4 @@
-module github.com/yunxiaozhao/Konsensus
+module github.com/MonteCarloClub/Konsensus
 
 go 1.20
 

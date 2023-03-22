@@ -4,9 +4,9 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/MonteCarloClub/Konsensus/util"
 	"github.com/MonteCarloClub/log"
 	"github.com/Shopify/sarama"
-	"github.com/yunxiaozhao/Konsensus/util"
 )
 
 type Consumer struct {

@@ -5,9 +5,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/yunxiaozhao/Konsensus/network"
-	"github.com/yunxiaozhao/Konsensus/pbft"
-	"github.com/yunxiaozhao/Konsensus/util"
+	"github.com/MonteCarloClub/Konsensus/network"
+	"github.com/MonteCarloClub/Konsensus/pbft"
+	"github.com/MonteCarloClub/Konsensus/util"
 )
 
 func main() {

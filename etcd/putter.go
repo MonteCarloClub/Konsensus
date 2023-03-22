@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/MonteCarloClub/Konsensus/util"
 	"github.com/MonteCarloClub/log"
-	"github.com/yunxiaozhao/Konsensus/util"
 	clientv3 "go.etcd.io/etcd/client/v3"
 )
 
