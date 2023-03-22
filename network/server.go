@@ -78,14 +78,16 @@ func (s *Server) StartServer() {
 					log.Error("fail to send preprepare message", "err", err)
 					continue
 				}
+				log.Info("node" + port + " verification succeed, process to prepare phase")
+				log.Info("===============prepare phase begins==================")
 
 				var result map[string]interface{}
 				json.NewDecoder(res.Body).Decode(&result)
 				if result["status"] == "ok" {
-					log.Info("A node votes yay")
+					log.Info("node" + port + " votes aye")
 					voteCount++
 				} else {
-					log.Warn("A node votes nay")
+					log.Warn("node" + port + " votes nay")
 				}
 			}
 

@@ -1036,13 +1036,12 @@ func (n *node) verifyHandler(c *gin.Context) {
 			return
 		}
 		if sm2.Verify(pubKey, nil, []byte(msg.Data), []byte(msg.SignResult)) {
-			log.Info("Preprepare pack received, signature verified, process to prepare")
+			log.Info("Preprepare pack received")
 		} else {
 			log.Error("Signature verification failed!!!")
 			c.JSON(http.StatusOK, gin.H{"status": "field"})
 			return
 		}
 	}
-	log.Info("===============prepare phase begins==================")
 	c.JSON(http.StatusOK, gin.H{"status": "ok"})
 }
