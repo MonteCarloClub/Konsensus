@@ -73,7 +73,7 @@ func (s *Server) StartServer() {
 					continue
 				}
 				buff := bytes.NewBuffer(jsonMsg)
-				res, err := http.Post("http://127.0.0.1:"+port+"/verify", "application/json", buff)
+				res, err := http.Post("http://127.0.0.1:10001/verify"+port, "application/json", buff)
 				if err != nil {
 					log.Error("fail to send preprepare message", "err", err)
 					continue
@@ -89,7 +89,7 @@ func (s *Server) StartServer() {
 				}
 			}
 
-			if voteCount >= (len(util.Config.FolowerPorts)-1)/3*2 {
+			if voteCount >= 667 {
 				log.Info("===============commit phase begins==================")
 				depositoryValue.Height = strconv.FormatInt(time.Now().Unix(), 10)
 				depositoryValueJson, _ := json.Marshal(depositoryValue)
